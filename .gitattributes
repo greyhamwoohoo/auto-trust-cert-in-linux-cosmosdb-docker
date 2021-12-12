@@ -1,0 +1,2 @@
+# We never want to coerce the line endings on shell scripts
+*.sh     eol=lf
