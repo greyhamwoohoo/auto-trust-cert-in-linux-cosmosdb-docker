@@ -19,6 +19,6 @@ services:
 
   busybox:
     image: alpine:3.12
-    command: /bin/sh -c "/workspace/wait-for-and-trust-cosmosdb.sh"
+    command: /bin/sh -c "/workspace/scripts/client/wait-for-and-trust-cosmosdb.sh"
     volumes:
-    - ./scripts/client/wait-for-and-trust-cosmosdb.sh:/workspace/wait-for-and-trust-cosmosdb.sh
+    - .:/workspace
