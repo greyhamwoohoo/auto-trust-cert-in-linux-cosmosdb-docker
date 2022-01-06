@@ -2,7 +2,7 @@
 apk add curl
 
 # Credit: https://gist.github.com/rgl/f90ff293d56dbb0a1e0f7e7e89a81f42
-timeout 300 /bin/sh -c "/workspace/scripts/client/wait-for-cosmosdb.sh"
+timeout 300 /bin/sh "/workspace/scripts/client/wait-for-cosmosdb.sh"
 
 echo ""
 echo ""
