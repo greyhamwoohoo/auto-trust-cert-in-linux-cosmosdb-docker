@@ -1,21 +1,26 @@
 version: "3.9"
 services:
   cosmosdb:
-    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
     ports:
     - 18081:8081
     - 10251:10251
     - 10252:10252
     - 10253:10253
     - 10254:10254
+    - 10255:10255
     deploy:
       resources:
         limits:
-          cpus: 2
+          cpus: "4.0"
           memory: 3g
     environment:
       # Set up the /alternativenames to the name of the service in this docker-compose so that other containers can access it via https://cosmosdb:8081/... 
       AZURE_COSMOS_EMULATOR_ARGS: /enablepreview /alternativenames=cosmosdb
+
+      # This is currently 10 in the startup script: /usr/local/bin/cosmos/start.sh
+      # Set it to a lower number to reduce the overall startup time. 
+      AZURE_COSMOS_EMULATOR_PARTITION_COUNT: "10"
 
   busybox:
     image: alpine:3.12
